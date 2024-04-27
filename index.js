@@ -15,68 +15,85 @@ function divide(a,b){
 let firstNum;
 let operand;
 let secondNum;
+let output;
 
-function operate(string){
-    string.pop();
-    console.log(string);
-    let newArray = [];
+function operate(firstNum, secondNum, operand){
     
-    
-    if(string.includes('+')){
-        newArray = string.join(''); 
-
-        nuevoString =newArray.split('+')
-        console.log(nuevoString);
-        num1 = nuevoString[0];
-        num2= nuevoString[1];
-        result = add(num1,num2);
+    if(operand == ('+')){
+        result = add(firstNum,secondNum);
         return result;
     }
 
-    if(string.includes('-')){
-        newArray = string.join(''); 
-
-        nuevoString =newArray.split('-')
-        num1 = nuevoString[0];
-        num2= nuevoString[1];
-        result = subtract(num1,num2);
-        return result;
-    }
-    if(string.includes('*')){
-        newArray = string.join(''); 
-
-        nuevoString =newArray.split('*')
-        num1 = nuevoString[0];
-        num2= nuevoString[1];
-        result = multiply(num1,num2);
-        return result;
-    }    
-    if(string.includes('/')){    
-        newArray = string.join(''); 
-
-        nuevoString =newArray.split('/')
-        num1 = nuevoString[0];
-        num2= nuevoString[1];
-        result = divide(num1,num2);
+    if(operand == ('-')){
+        result = subtract(firstNum,secondNum);
         return result;
     }
 
+    if(operand == ('*')){
+        result = multiply(firstNum,secondNum);
+        return result;
+    }  
+
+    if(operand == ('/')){          
+        if(secondNum == 0){
+            return "ayooo";
+        }
+        result = divide(firstNum,secondNum);
+        return result;
+    }
 }
+
+
+
 let body = document.querySelector("body");
 let buttons = document.querySelectorAll("button");
 buttons.forEach(populateDisplay);
 let display = document.createElement("div");
+let textContainer= '';
+let clearBtn = document.querySelector('.clear');
+let plusBtn = document.querySelector('.p');
+
+
+
+clearBtn.addEventListener("click",()=>{
+    firstNum= '';
+    secondNum= '';
+    operand= '';
+    display.textContent = '';
+    textContainer= '';
+})
 
 function populateDisplay(el){
     el.addEventListener("click",()=>{
+        textContainer += el.textContent;
+
         display.textContent += el.textContent;
-        body.appendChild(display);
-        let yomama = `${display.textContent}`;
-        console.log(yomama);
-        let array = yomama.split('');
-        console.log(array);
-        if(array.includes('='||'+','+'1)){
-            display.textContent = operate(array);
+        let displayContainer = `${display.textContent}`;
+
+        if(displayContainer.includes('+')||displayContainer.includes('/')||displayContainer.includes('*')){
+            makeVar(displayContainer);
+
         }
+        if(displayContainer.includes('=')){
+            makeVar2RunOperation(displayContainer);
+        }
+        body.appendChild(display);
+        console.log(textContainer)
     });
+}
+
+
+
+function makeVar(item){
+    operand = item.slice(-1);
+    justNumber =item.slice(0,-1);
+    firstNum= justNumber;
+
+    display.textContent='';
+}
+function makeVar2RunOperation(item){
+    justNumber =item.slice(0,-1);
+    secondNum= justNumber;
+    display.textContent = operate(firstNum,secondNum,operand);
+
 }
