@@ -46,13 +46,15 @@ function operate(firstNum, secondNum, operand){
 
 
 let body = document.querySelector("body");
-let buttons = document.querySelectorAll("button");
+let buttons = document.querySelectorAll(".number");
 buttons.forEach(populateDisplay);
 let display = document.createElement("div");
+let answer = document.createElement("div");
 let textContainer= '';
 let clearBtn = document.querySelector('.clear');
-let plusBtn = document.querySelector('.p');
-
+let operandBtn = document.querySelectorAll('.operand');
+let equalBtn = document.querySelector('.equals')
+operandBtn.forEach(operandBtnFunc);
 
 
 clearBtn.addEventListener("click",()=>{
@@ -61,39 +63,59 @@ clearBtn.addEventListener("click",()=>{
     operand= '';
     display.textContent = '';
     textContainer= '';
+    clickCounter=0;
 })
+
+let displayContainer='';
 
 function populateDisplay(el){
     el.addEventListener("click",()=>{
-        textContainer += el.textContent;
-
+        
         display.textContent += el.textContent;
-        let displayContainer = `${display.textContent}`;
-
-        if(displayContainer.includes('+')||displayContainer.includes('/')||displayContainer.includes('*')){
-            makeVar(displayContainer);
-
-        }
-        if(displayContainer.includes('=')){
-            makeVar2RunOperation(displayContainer);
-        }
+        displayContainer = `${display.textContent}`;
         body.appendChild(display);
-        console.log(textContainer)
     });
 }
 
+let clickCounter=0;
+let gyatt ='';
+function operandBtnFunc(el){
+    el.addEventListener('click',()=>{
+        if(clickCounter == 0){        
+        operand = el.textContent;
+        firstNum = display.textContent;
+        
+        display.textContent='';
+    }
+    if(clickCounter== 1){
+        secondNum = display.textContent;
+        gyatt = operate(firstNum,secondNum,operand)
+        display.textContent= gyatt ;
+        //operand =el;
+        //firstNum = display.textContent;
+    }
+    if(clickCounter >= 2){
+        firstNum = display.textContent
+        
+        secondNum = display.textContent;
+        gyatt = operate(firstNum,secondNum,operand)
+        display.textContent= gyatt ;
 
-
-function makeVar(item){
-    operand = item.slice(-1);
-    justNumber =item.slice(0,-1);
-    firstNum= justNumber;
-
-    display.textContent='';
+    }
+        
+    clickCounter++;
+    })
 }
-function makeVar2RunOperation(item){
-    justNumber =item.slice(0,-1);
-    secondNum= justNumber;
+
+
+
+equalBtn.addEventListener('click',()=>{
+
+    secondNum = display.textContent;
+    console.log(secondNum);
     display.textContent = operate(firstNum,secondNum,operand);
 
-}
+
+
+});
+
