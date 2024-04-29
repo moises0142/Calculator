@@ -78,19 +78,42 @@ function populateDisplay(el){
 function operandBtnFunc(el){
     el.addEventListener('click',()=>{
 
-        displayContainer = display.textContent;
-        operand = el.textContent
-        firstNum = display.textContent;
+        if(i<1){
+
+            if(display.textContent !== ''){    
+                firstNum = display.textContent;
+            }     
+                   
+            //displayContainer = display.textContent;
+            operand = el.textContent
+        }
+
      
         if(i >= 1){
+
             if(output){
                 firstNum=output;
+                operand = el.textContent;
+
             }
-            secondNum=displayContainer;
+            if(display.textContent == '' && output){    
+                secondNum=output;
+                operand = el.textContent;
+            }
+            if(display.textContent == ''){
+                secondNum=firstNum;
+            }
+       
+            else{
+                secondNum = display.textContent;
+            } 
+            if(isNaN(firstNum)){
+                firstNum=secondNum;
+            }
             getResult();
         }
 
-        display.textContent='';     
+       display.textContent='';     
 
         i++;
     })
@@ -104,9 +127,9 @@ equalBtn.addEventListener('click',()=>{
 
 function getResult(){
     
-    secondDisplayContainer =display.textContent;
-    if(secondDisplayContainer !== ''){    
-        secondNum = secondDisplayContainer;
+    //secondDisplayContainer =display.textContent;
+    if(display.textContent !== ''){    
+        secondNum = display.textContent;
     }
     
     display.textContent='';       
@@ -114,4 +137,8 @@ function getResult(){
     output = answer.textContent;
     body.appendChild(answer);
 
+
+    console.log(operand);
+    console.log(firstNum);
+    console.log(secondNum);
 }
