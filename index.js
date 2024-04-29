@@ -17,7 +17,7 @@ let operand;
 let secondNum;
 let output;
 
-function operate(firstNum, secondNum, operand){
+function operate(){
     
     if(operand == ('+')){
         result = add(firstNum,secondNum);
@@ -43,18 +43,16 @@ function operate(firstNum, secondNum, operand){
     }
 }
 
-
-
 let body = document.querySelector("body");
-let buttons = document.querySelectorAll(".number");
-buttons.forEach(populateDisplay);
+let numberButtons = document.querySelectorAll(".number");
+numberButtons.forEach(populateDisplay);
 let display = document.createElement("div");
 let answer = document.createElement("div");
-let textContainer= '';
 let clearBtn = document.querySelector('.clear');
 let operandBtn = document.querySelectorAll('.operand');
 let equalBtn = document.querySelector('.equals')
 operandBtn.forEach(operandBtnFunc);
+let i = 0;
 
 
 clearBtn.addEventListener("click",()=>{
@@ -62,60 +60,58 @@ clearBtn.addEventListener("click",()=>{
     secondNum= '';
     operand= '';
     display.textContent = '';
-    textContainer= '';
-    clickCounter=0;
+    answer.textContent = '';
+    i=0;
+
 })
 
-let displayContainer='';
 
 function populateDisplay(el){
     el.addEventListener("click",()=>{
-        
+        answer.textContent = '';
         display.textContent += el.textContent;
-        displayContainer = `${display.textContent}`;
         body.appendChild(display);
     });
 }
 
-let clickCounter=0;
-let gyatt ='';
+
 function operandBtnFunc(el){
     el.addEventListener('click',()=>{
-        if(clickCounter == 0){        
-        operand = el.textContent;
-        firstNum = display.textContent;
-        
-        display.textContent='';
-    }
-    if(clickCounter== 1){
-        secondNum = display.textContent;
-        gyatt = operate(firstNum,secondNum,operand)
-        display.textContent= gyatt ;
-        //operand =el;
-        //firstNum = display.textContent;
-    }
-    if(clickCounter >= 2){
-        firstNum = display.textContent
-        
-        secondNum = display.textContent;
-        gyatt = operate(firstNum,secondNum,operand)
-        display.textContent= gyatt ;
 
-    }
-        
-    clickCounter++;
+        displayContainer = display.textContent;
+        operand = el.textContent
+        firstNum = display.textContent;
+     
+        if(i >= 1){
+            if(output){
+                firstNum=output;
+            }
+            secondNum=displayContainer;
+            getResult();
+        }
+
+        display.textContent='';     
+
+        i++;
     })
 }
 
-
-
+equalBtn.addEventListener('click',getResult);
 equalBtn.addEventListener('click',()=>{
-
-    secondNum = display.textContent;
-    console.log(secondNum);
-    display.textContent = operate(firstNum,secondNum,operand);
-
-
-
+    i = 0;
 });
 
+
+function getResult(){
+    
+    secondDisplayContainer =display.textContent;
+    if(secondDisplayContainer !== ''){    
+        secondNum = secondDisplayContainer;
+    }
+    
+    display.textContent='';       
+    answer.textContent = operate();
+    output = answer.textContent;
+    body.appendChild(answer);
+
+}
