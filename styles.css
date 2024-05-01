@@ -1,3 +1,34 @@
 body{
     background-color: rgba(39, 44, 48, 0.712);
+    max-width: 25vw; 
+    margin-left: auto;
+    margin-right: auto;
+}
+.allButtonCont{   
+    display: flex;
+    flex-direction: column;
+}
+.numberButtonCont{
+    padding: 0px;
+    gap:0px;
+
+}
+.number{
+    min-width: 32.5%;
+}
+.displayHtml{
+
+    justify-content: right;
+    padding:30px;
+    outline:auto;
+}
+.operandCont{
+    display:flex;
+    flex-direction: column;
+}
+.zero{
+    width: 66.3%;
+}
+.topRow{
+    min-width: 32.5%;
 }
