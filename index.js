@@ -40,7 +40,7 @@ numberButtons.forEach(populateDisplay);
 let display = document.createElement("div");
 let answer = document.createElement("div");
 let clearBtn = document.querySelector('.clear');
-let operandBtn = document.querySelectorAll('.operand');
+let operandBtn = document.querySelectorAll('.one');
 let equalBtn = document.querySelector('.equals')
 operandBtn.forEach(operandBtnFunc);
 let i = 0;
@@ -48,20 +48,32 @@ let dot = document.querySelector(".dot");
 let backspace = document.querySelector(".backSpace");
 let displayContainer;
 let plusOrMinus = document.querySelector(".plusOrMinus")
+let displayZero=document.createElement("div")
 
 clearBtn.addEventListener("click",()=>{
     firstNum= '';
     secondNum= '';
     operand= '';
+    output='';
     display.textContent = '';
     answer.textContent = '';
     i=0;
+    displayZero.textContent = 0;
+
+    displayHtml.appendChild(displayZero);
 
 })
+
+displayZero.textContent = 0;
+displayHtml.appendChild(displayZero);
+
+
+
 
 
 function populateDisplay(el){
     el.addEventListener("click",()=>{
+        displayZero.textContent='';
         answer.textContent = '';
         display.textContent += el.textContent;
         displayContainer = display.textContent;
@@ -72,7 +84,7 @@ function populateDisplay(el){
 
 function operandBtnFunc(el){
     el.addEventListener('click',()=>{
-
+        
         if(i<1){
 
             if(display.textContent !== ''){    
@@ -106,8 +118,11 @@ function operandBtnFunc(el){
       
             getResult();
         }
+        display.textContent='';
+        answer.textContent=firstNum;
+        displayHtml.appendChild(answer);
 
-       display.textContent='';     
+            
 
         i++;
     })
@@ -138,6 +153,10 @@ function getResult(){
     answer.textContent = operate();
     output = answer.textContent;
     displayHtml.appendChild(answer);
+    console.log(operand)
+    console.log(firstNum)
+    console.log(secondNum)
+    console.log(answer.textContent)
 
 }
 
