@@ -17,7 +17,7 @@ function operate(){
         return result;
     }
 
-    if(operand == ('*')){
+    if(operand == ('x')){
         num= +firstNum * +secondNum;
         result = Math.round(num*1000)/1000;
         return result;
