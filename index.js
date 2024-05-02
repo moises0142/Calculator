@@ -38,9 +38,7 @@ let displayHtml = document.querySelector(".displayHtml")
 let numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach(populateDisplay);
 let display = document.createElement("div");
-display.classList.add('display')
 let answer = document.createElement("div");
-answer.classList.add('display')
 let clearBtn = document.querySelector('.clear');
 let operandBtn = document.querySelectorAll('.operand');
 let equalBtn = document.querySelector('.equals')
@@ -49,6 +47,7 @@ let i = 0;
 let dot = document.querySelector(".dot");
 let backspace = document.querySelector(".backSpace");
 let displayContainer;
+let plusOrMinus = document.querySelector(".plusOrMinus")
 
 clearBtn.addEventListener("click",()=>{
     firstNum= '';
@@ -80,7 +79,6 @@ function operandBtnFunc(el){
                 firstNum = display.textContent;
             }     
                    
-            //displayContainer = display.textContent;
             operand = el.textContent
         }
 
@@ -123,7 +121,6 @@ equalBtn.addEventListener('click',()=>{
 
 function getResult(){
     
-    //secondDisplayContainer =display.textContent;
     if(display.textContent !== ''){    
         secondNum = display.textContent;
     }   
@@ -142,24 +139,20 @@ function getResult(){
     output = answer.textContent;
     displayHtml.appendChild(answer);
 
-
-    console.log(operand);
-    console.log(firstNum);
-    console.log(secondNum);
 }
 
 backspace.addEventListener("click",()=>{
     if(output){
-        gyatt = output.slice(0,-1);
-        answer.textContent=gyatt;
-        output=gyatt;
+        placeHolder = output.slice(0,-1);
+        answer.textContent=placeHolder;
+        output=placeHolder;
     
         displayHtml.appendChild(answer);
     } 
     else{   
-    gyatt = displayContainer.slice(0,-1);    
-    display.textContent=gyatt;
-    displayContainer=gyatt;
+    placeHolder = displayContainer.slice(0,-1);    
+    display.textContent=placeHolder;
+    displayContainer=placeHolder;
 
     displayHtml.appendChild(display);
     }
@@ -167,4 +160,8 @@ backspace.addEventListener("click",()=>{
 
 dot.addEventListener("click",()=>{
     display.textContent +=".";
+})
+
+plusOrMinus.addEventListener("click",()=>{
+    display.textContent = - + display.textContent;
 })

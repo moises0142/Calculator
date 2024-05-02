@@ -4,31 +4,60 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
-.allButtonCont{   
-    display: flex;
-    flex-direction: column;
-}
-.numberButtonCont{
-    padding: 0px;
-    gap:0px;
-
-}
-.number{
-    min-width: 32.5%;
-}
 .displayHtml{
-
     justify-content: right;
     padding:30px;
     outline:auto;
 }
-.operandCont{
-    display:flex;
-    flex-direction: column;
-}
-.zero{
-    width: 66.3%;
+
+
+.utilitiesCont{
+    display:flex;   
+    padding:0px;
 }
 .topRow{
-    min-width: 32.5%;
+    min-width: 25%;
+    height:40px;
+    display: flex;
+    text-align:center;
+    flex-wrap: wrap;
+}
+
+
+
+.bottomRow{
+    display: flex;
+    gap:0px;
+    align-items: stretch;
+    padding:0px;
+    flex-wrap: wrap;
+}
+.numberButtonCont{
+    display: flex;
+    flex-wrap:wrap;
+    gap:0px;
+    flex-grow: 1;    
+
+}
+.number{
+    min-width: 33%;
+    height:40px;
+
+}
+.zero{
+    width: 66%;
+}
+
+
+.operandCont{
+    display:flex;
+    flex-direction: column; 
+    align-items: left;
+    min-width: 20%;
+    flex-grow: 4;    
+    
+
+}
+.operand{
+    height:40px;
 }
