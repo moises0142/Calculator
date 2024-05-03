@@ -23,7 +23,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     width: 25%;
-    padding:0px;
+    border-radius: 0 !important;
 }
 
 
@@ -44,7 +44,7 @@ body{
     height:40px;
     min-width: 33.3%;
     flex-grow: 1;
-    padding:0px;
+    border-radius: 0 !important;
 }
 .zero{
     width: 66%;
@@ -62,7 +62,7 @@ body{
 }
 .operator{
     height:40px;
-    padding:0px;
+    border-radius: 0 !important;
 }
 
 .allButtonCont{
