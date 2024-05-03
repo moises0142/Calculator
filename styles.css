@@ -1,6 +1,6 @@
 body{
     background-image : url(images/pov.jpg);
-    background-size: 70% 250%;
+    background-size: 100% 250%;
     background-repeat: no-repeat;
     margin-left: auto;
     background-position: center top;       
@@ -53,7 +53,7 @@ img{
 
 }
 .number{
-    height:40px;
+    height:60px;
     min-width: 33.3%;
     flex-grow: 1;
     border-radius: 0px;
@@ -85,4 +85,7 @@ img{
     border: 4px outset #1C6EA4;
 
     background-color: white;
+}
+.equals{
+flex-grow:5;
 }
