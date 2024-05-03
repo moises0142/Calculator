@@ -4,6 +4,9 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+.iphoneWidth{
+    max-width: none;
+}
 .displayHtml{
     justify-content: right;
     padding:30px;
@@ -27,9 +30,7 @@ body{
 .bottomRow{
     display: flex;
     gap:0px;
-    align-items: stretch;
     padding:0px;
-    flex-wrap: wrap;
 }
 .numberButtonCont{
     display: flex;

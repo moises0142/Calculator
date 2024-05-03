@@ -100,7 +100,7 @@ function operandBtnFunc(el){
             if(output){
                 firstNum=output;
                 operand = el.textContent;
-
+            
             }
             if(display.textContent == '' && output){    
                 secondNum=output;
@@ -169,9 +169,9 @@ backspace.addEventListener("click",()=>{
         displayHtml.appendChild(answer);
     } 
     else{   
-    placeHolder = displayContainer.slice(0,-1);    
-    display.textContent=placeHolder;
-    displayContainer=placeHolder;
+    secondPlaceHolder = displayContainer.slice(0,-1);    
+    display.textContent=secondPlaceHolder;
+    displayContainer=secondPlaceHolder;
 
     displayHtml.appendChild(display);
     }
@@ -184,3 +184,9 @@ dot.addEventListener("click",()=>{
 plusOrMinus.addEventListener("click",()=>{
     display.textContent = - + display.textContent;
 })
+if(navigator.userAgent.match(/iPhone/i)){
+    body.classList.add("iphoneWidth");
+}
+else{
+    body.classList.remove('iphoneWidth');
+}
