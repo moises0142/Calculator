@@ -84,7 +84,7 @@ function populateDisplay(el){
 
 function operandBtnFunc(el){
     el.addEventListener('click',()=>{
-        
+
         if(i<1){
 
             if(display.textContent !== ''){    
@@ -176,10 +176,6 @@ backspace.addEventListener("click",()=>{
     displayHtml.appendChild(display);
     }
 });
-
-dot.addEventListener("click",()=>{
-    display.textContent +=".";
-})
 
 plusOrMinus.addEventListener("click",()=>{
     display.textContent = - + display.textContent;

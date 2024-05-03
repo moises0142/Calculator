@@ -6,6 +6,7 @@ body{
 }
 .iphoneWidth{
     max-width: none;
+    border-radius: 0px;
 }
 .displayHtml{
     justify-content: right;
@@ -23,7 +24,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     width: 25%;
-    border-radius: 0 !important;
+    border-radius: 0px;
 }
 
 
@@ -44,7 +45,7 @@ body{
     height:40px;
     min-width: 33.3%;
     flex-grow: 1;
-    border-radius: 0 !important;
+    border-radius: 0px;
 }
 .zero{
     width: 66%;
@@ -62,7 +63,7 @@ body{
 }
 .operator{
     height:40px;
-    border-radius: 0 !important;
+    border-radius: 0px;
 }
 
 .allButtonCont{
