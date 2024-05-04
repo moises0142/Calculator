@@ -108,9 +108,13 @@ function operandBtnFunc(el){
             }
             if(display.textContent == ''){
                 secondNum=firstNum;
+                operand = el.textContent;
+
             }
             else{
                 secondNum = display.textContent;
+                operand = el.textContent;
+
             } 
             if(isNaN(firstNum)){
                 firstNum=secondNum;
@@ -119,8 +123,8 @@ function operandBtnFunc(el){
             getResult();
         }
         display.textContent='';
-        answer.textContent=firstNum;
-        displayHtml.appendChild(answer);
+        //answer.textContent=firstNum;
+        //displayHtml.appendChild(answer);
 
             
 
